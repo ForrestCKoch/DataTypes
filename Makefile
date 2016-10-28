@@ -1,8 +1,11 @@
 CC=gcc
 CFLAGS=-g -Wall -pg
-bins= interpreter test_bst test_graph stress_graph test_queue test_trie
+bins= interpreter test_bst test_graph stress_graph test_queue test_trie\
+	print_trie
 
 all: $(bins)
+
+print_trie: print_trie.c trie.o trie.h bst.o
 
 interpreter: graph.o interpreter.c bst.o
 
