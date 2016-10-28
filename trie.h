@@ -3,6 +3,8 @@
 
 #include <stdbool.h>
 
+#define MAX_WORD_LENGTH 64
+
 typedef struct _trie_t *trie_t;
 // returns a pointer to a trie type
 trie_t new_trie();

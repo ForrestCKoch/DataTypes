@@ -6,7 +6,7 @@
 
 * Creation Date : 28-10-2016
 
-* Last Modified : Fri 28 Oct 2016 07:10:19 PM AEDT
+* Last Modified : Fri 28 Oct 2016 08:17:40 PM AEDT
 
 * Created By : Forrest Koch 
 
@@ -30,6 +30,7 @@ struct _trie_t{
 
 static trie_node_t new_trie_node(char c, int is_key);
 static void dest_trie_node(trie_node_t node);
+static void print_trie_node(trie_node_t node, char *word, int depth);
 
 trie_t new_trie(){
     trie_t trie = malloc(sizeof(struct _trie_t));
@@ -83,7 +84,27 @@ int is_in_trie(trie_t trie, char *word){
     else return false;
 }
 
-void print_trie(trie_t trie);
+void print_trie(trie_t trie){
+    char word[MAX_WORD_LENGTH];
+    int *nodes = bst_to_array(trie->root->children);
+    for(int i = 0; i < size_of_bst(trie->root->children); i++){
+        print_trie_node(is_in_bst(trie->root->children,nodes[i]),word,0);
+    }
+    free(nodes);
+}
+
+static void print_trie_node(trie_node_t node, char *word, int depth){
+    int *nodes = bst_to_array(node->children);
+    // write self to word
+    word[depth] = node->value;
+    if(node->is_key){
+        word[depth+1] = 0;
+        printf("%s\t%d\n",word,node->is_key);
+    }
+    for(int i = 0; i < size_of_bst(node->children); i++){
+        print_trie_node(is_in_bst(node->children,nodes[i]),word,depth+1);
+    }
+}
 
 static trie_node_t new_trie_node(char c, int is_key){
     trie_node_t node = malloc(sizeof(struct _trie_node_t));
