@@ -2,11 +2,12 @@
 
 * File Name : print_trie.c
 
-* Purpose :
+* Purpose : read a bunch of words from stdin then print out occurences
+* of each word
 
 * Creation Date : 28-10-2016
 
-* Last Modified : Sat 29 Oct 2016 12:23:24 AM AEDT
+* Last Modified : Mon 31 Oct 2016 07:48:22 PM AEDT
 
 * Created By : Forrest Koch 
 
