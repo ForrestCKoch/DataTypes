@@ -6,7 +6,7 @@
 
 * Creation Date : 28-10-2016
 
-* Last Modified : Fri 28 Oct 2016 08:30:43 PM AEDT
+* Last Modified : Sat 29 Oct 2016 12:28:23 AM AEDT
 
 * Created By : Forrest Koch 
 
@@ -99,11 +99,12 @@ static void print_trie_node(trie_node_t node, char *word, int depth){
     word[depth] = node->value;
     if(node->is_key){
         word[depth+1] = 0;
-        printf("%s\t%d\n",word,node->is_key);
+        printf("%d\t%s\n",node->is_key,word);
     }
     for(int i = 0; i < size_of_bst(node->children); i++){
         print_trie_node(is_in_bst(node->children,nodes[i]),word,depth+1);
     }
+    free(nodes);
 }
 
 static trie_node_t new_trie_node(char c, int is_key){
